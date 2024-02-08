@@ -13,6 +13,20 @@ console.log(process.env.NODE_ENV)
 connectDB()
 const PORT = process.env.PORT || 3500
 
+app.use('/api/v1', require('./routes/authRoute'))
+
+// default error handler middleware
+app.use((err, req, res, next) => {
+    const statusCode = err.statusCode || 500
+    const message = err.message || 'Internal Server Error'
+
+    return res.status(statusCode).json({
+        success: false,
+        statusCode,
+        message
+    })
+})
+
 mongoose.connection.once('open', () => {
     console.log("Connected to MongoDB Atlas")
     app.listen(PORT, () => {
