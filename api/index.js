@@ -14,6 +14,7 @@ connectDB()
 const PORT = process.env.PORT || 3500
 
 app.use('/api/v1', require('./routes/authRoute'))
+app.use('/api/v1/student', require('./routes/studentRoute'))
 
 // default error handler middleware
 app.use((err, req, res, next) => {
