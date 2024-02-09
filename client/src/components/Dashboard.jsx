@@ -1,9 +1,16 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import Navbar from './Navbar'
 
 const Dashboard = () => {
+  const { currentUser } = useSelector((state) => state.teacher)
+  const { teachername } = currentUser
+
   return (
     <div>
-      This is a Dashboard
+      <div className="">
+        <Navbar teachername={teachername} />
+      </div>
     </div>
   )
 }
