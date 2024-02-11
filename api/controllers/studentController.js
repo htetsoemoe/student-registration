@@ -40,7 +40,27 @@ const getStudents = async (req, res, next) => {
 
 }
 
+const deleteStudent = async (req, res, next) => {
+    const student = await Student.findById(req.params.studentId)
+
+    if (!student) {
+        return next(errorHandler(401, 'You can only delete your student'))
+    }
+
+    if (req.userId !== student.teacherRef) {
+        return next(errorHandler(401, 'You can only delete your student'))
+    }
+
+    try {
+        await Student.findByIdAndDelete(req.params.studentId)
+        res.status(200).json('Student has been delete!')
+    } catch (error) {
+        next(error)
+    }
+}
+
 module.exports = {
     createStudent,
     getStudents,
+    deleteStudent,
 }

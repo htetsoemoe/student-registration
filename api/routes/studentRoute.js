@@ -5,5 +5,6 @@ const verifyToken = require('../utils/verifyToken')
 
 router.post('/create', verifyToken, studentController.createStudent)
 router.get('/', verifyToken, studentController.getStudents)
+router.delete('/delete/:studentId', verifyToken, studentController.deleteStudent)
 
 module.exports = router

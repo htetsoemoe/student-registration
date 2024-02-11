@@ -32,9 +32,9 @@ const Navbar = ({ teachername }) => {
             <div className="flex items-center gap-5">
                 <div className="flex items-center gap-2">
                     <FaUserCircle className='text-white' />
-                    <p className="text-yellow-300 font-semibold hover:underline hover:cursor-pointer">{teachername}</p>
+                    <p className="text-yellow-200 font-semibold hover:underline hover:cursor-pointer">{teachername}</p>
                 </div>
-                <p onClick={signOutHandler} className='bg-blue-500 px-2 py-1 border rounded-sm font-semibold hover:bg-blue-300 hover:cursor-pointer'>Logout</p>
+                <p onClick={signOutHandler} className='bg-slate-700 px-2 py-1 border rounded-md font-semibold text-white hover:bg-slate-600 hover:cursor-pointer'>Logout</p>
             </div>
         </div>
     )
