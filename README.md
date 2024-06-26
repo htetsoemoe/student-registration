@@ -6,6 +6,7 @@ Some Features:
 -   🎃 Authentication & Authorization with JWT
 -   🎃 One Teacher can register many students
 -   🎃 Each Teacher can see only their students, cannot see other teacher's students
+-   🎃 Each Teacher can update information of a specified student
 -   🎃 Each Teacher can delete a specified student
 
 ### Setup .env file in api (backend project)
