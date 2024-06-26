@@ -56,7 +56,7 @@ const SignUp = () => {
             <form
                 onSubmit={handleSubmit}
                 className="w-4/12 flex flex-col gap-5">
-                <h1 className='text-4xl font-semibold mt-5 mb-12'>Student Portal</h1>
+                <h1 className='text-4xl font-semibold mt-5 mb-12'>Student Registration</h1>
                 <div className="mb-2">
                     <input
                         type="text"
@@ -93,7 +93,7 @@ const SignUp = () => {
                     <div className="flex gap-5">
                         <p className="">Already have an account?</p>
                         <Link to={'/sign-in'}>
-                            <span className="px-4 py-1 bg-blue-900 rounded text-white">Login</span>
+                            <span className="px-4 py-1 bg-blue-900 rounded text-white">Sign In</span>
                         </Link>
                     </div>
                     {<p className='text-red-700 mt-5'>{error}</p>}

@@ -37,7 +37,6 @@ const getStudents = async (req, res, next) => {
             next(error)
         }
     }
-
 }
 
 const deleteStudent = async (req, res, next) => {
@@ -59,8 +58,37 @@ const deleteStudent = async (req, res, next) => {
     }
 }
 
+const updateStudent = async (req, res, next) => {
+    console.log(req.params.teacherId, req.params.stuId)
+
+    const teacher = await Teacher.findOne({ _id: req.params.teacherId })
+    if (!teacher) {
+        return next(errorHandler(404, "Teacher not found!"))
+    }
+
+    try {
+        const updatedStudent = await Student.findByIdAndUpdate(
+            req.params.stuId,
+            {
+                $set: {
+                    name: req.body.name,
+                    email: req.body.email,
+                    subject: req.body.subject,
+                    address: req.body.address,
+                    teacherRef: teacher._id.toString()
+                }
+            },
+            { new: true }
+        )
+        res.status(200).json(updatedStudent)
+    } catch (error) {
+        next(error)
+    }
+}
+
 module.exports = {
     createStudent,
     getStudents,
     deleteStudent,
+    updateStudent,
 }

@@ -5,6 +5,9 @@ import { signInStart, signInFailure, signInSuccess } from '../redux/teacher/teac
 
 const SignIn = () => {
     const [formData, setFormData] = useState({})
+
+    // @returns — The selected part of the state or derived data.
+    useSelector((state) => console.log(state.teacher)) // state.teacher is 'teacherSlice name' = returns {currentUser: {…}, error: null, loading: false}
     const { loading, error } = useSelector((state) => state.teacher)
 
     const dispatch = useDispatch()
@@ -29,9 +32,12 @@ const SignIn = () => {
                 },
                 body: JSON.stringify(formData)
             })
+            // console.log(res) // Promise 
+
             const data = await res.json()
             console.log(data)
 
+            // If SignIn is not success, res.json() data will be an error object = {success: false,statusCode,message}
             if (data.success === false) {
                 dispatch(signInFailure(data.message))
                 console.log(data.message)
@@ -54,7 +60,7 @@ const SignIn = () => {
             <form
                 onSubmit={handleSubmit}
                 className="w-4/12 flex flex-col gap-5">
-                <h1 className='text-4xl font-semibold mb-12'>Student Portal</h1>
+                <h1 className='text-4xl font-semibold mb-12'>Student Registration</h1>
                 <div className="mb-2">
                     <input
                         type="email"
@@ -83,7 +89,7 @@ const SignIn = () => {
                     <div className="flex gap-5">
                         <p className="">Want to create a new account?</p>
                         <Link to={'/sign-up'}>
-                            <span className="px-4 py-1 bg-blue-900 rounded text-white">Register</span>
+                            <span className="px-4 py-1 bg-blue-900 rounded text-white">Sign Up</span>
                         </Link>
                     </div>
                 </div>

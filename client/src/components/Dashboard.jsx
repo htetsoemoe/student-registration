@@ -5,14 +5,17 @@ import { addStudentsToStore } from '../redux/student/studentSlice'
 import { useDispatch } from 'react-redux'
 import { Table } from '@mantine/core'
 import Swal from 'sweetalert2'
+import { Link } from 'react-router-dom'
 
 const Dashboard = () => {
   const { currentUser } = useSelector((state) => state.teacher)
   console.log(currentUser._id)
   const { teachername, _id: teacherId } = currentUser
   console.log(teacherId)
+
   const { currentStudents } = useSelector((state) => state.student)
   console.log(currentStudents)
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -82,7 +85,7 @@ const Dashboard = () => {
 
       dispatch(addStudentsToStore(currentStudents.filter((student) => student._id !== studentId)))
     } catch (error) {
-
+      setError(error.message)
     }
   }
 
@@ -120,9 +123,17 @@ const Dashboard = () => {
         <td className="">
           <p
             onClick={() => deleteStudentHandler(student._id)}
-            className='px-3 py-2 bg-red-500 text-center text-white hover:bg-red-400 rounded-md cursor-pointer'>
+            className='px-3 py-2 bg-red-500 text-center text-white hover:bg-red-400 rounded-md cursor-pointer mr-3'>
             Delete
           </p>
+        </td>
+        <td className="">
+          <Link to={`/student/${student._id}`}>
+            <p
+              className='px-3 py-2 bg-blue-500 text-center text-white hover:bg-blue-400 rounded-md cursor-pointer ml-3'>
+              Update
+            </p>
+          </Link>
         </td>
       </tr>
     )

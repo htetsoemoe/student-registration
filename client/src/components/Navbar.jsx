@@ -2,6 +2,7 @@ import React from 'react'
 import { FaUserCircle } from "react-icons/fa";
 import { signOutStart, signOutSuccess, signOutFailure } from '../redux/teacher/teacherSlice'
 import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom';
 
 const Navbar = ({ teachername }) => {
     console.log(teachername)
@@ -28,7 +29,11 @@ const Navbar = ({ teachername }) => {
 
     return (
         <div className="flex justify-between bg-slate-500 p-5 pl-16 pr-16">
-            <p className="text-xl text-white font-semibold">Student Portal</p>
+            <p className="text-xl text-white font-semibold hover:text-yellow-300">
+                <Link to={`/`}>
+                    Student Registration
+                </Link>
+            </p>
             <div className="flex items-center gap-5">
                 <div className="flex items-center gap-2">
                     <FaUserCircle className='text-white' />

@@ -4,6 +4,7 @@ import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
 import Dashboard from './components/Dashboard'
 import PrivateRoutes from './components/PrivateRoutes'
+import UpdateStudent from './components/UpdateStudent'
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
 
         <Route element={<PrivateRoutes />}>
           <Route path='/' element={<Dashboard />} />
+          <Route path='/student/:id' element={<UpdateStudent />} />
         </Route>
       </Routes>
     </>
